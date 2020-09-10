@@ -18,6 +18,6 @@ elif outlay == earnings:
 
 else:
     print(f'Прибыль организации составляет {profit}р.')
-    print(f'Рентабельность = {profit_margin}')
+    print(f'Рентабельность = {profit_margin:.2f}')
 
 print('End')
