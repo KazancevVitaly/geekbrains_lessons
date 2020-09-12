@@ -12,9 +12,14 @@
 # ]
 
 goods_list = []
+goods = []
+cost_evth = []
+sum_evth = []
+unit_evth = []
+ex = None
 i = 0
 
-while True:
+while ex != 'нет':
     name = input('Введите название товара:   ')
     cost = input('Укажите стоимость товара:  ')
     sum_ = input('Укажите количество товара:  ')
@@ -22,10 +27,17 @@ while True:
     goods_dict = {'название': name, 'цена': cost, 'количество': sum_, 'ед': unit}
     i += 1
     goods_tuple = (i, goods_dict)
-    print(goods_tuple)
     goods_list.append(goods_tuple)
-    print(goods_list)
-    pass
+    goods.append(name)
+    cost_evth.append(cost)
+    sum_evth.append(sum_)
+    unit_evth.append(unit)
+    analytics = {'название': goods, 'цена': cost_evth, 'количество': sum_evth, 'ед': unit_evth}
+    ex = input('Желаете продолжить? Да или нет:   ')
+    ex = ex.lower()
+
+print(goods_list)
+print(analytics)
 
 # Необходимо собрать аналитику о товарах.
 # Реализовать словарь, в котором каждый ключ — характеристика товара,
