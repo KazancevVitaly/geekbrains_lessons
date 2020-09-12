@@ -4,7 +4,6 @@
 # Для заполнения списка элементов необходимо использовать функцию input().
 
 user_list = []
-print(type(user_list))
 el = None
 
 while el != 'end':

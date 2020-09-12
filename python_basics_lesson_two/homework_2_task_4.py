@@ -8,4 +8,4 @@ user_list = user_list.split()
 index = 0
 for el in user_list:
     index += 1
-    print(str(index) +') ' + el)
+    print(str(index) +') ' + el[:10])
