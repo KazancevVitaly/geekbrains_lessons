@@ -36,8 +36,19 @@ while ex != 'нет':
     ex = input('Желаете продолжить? Да или нет:   ')
     ex = ex.lower()
 
-print(goods_list)
-print(analytics)
+print('Структура данных')
+
+print('[')
+for el in goods_list:
+    print(el)
+print(']')
+
+print('Аналитика')
+
+print('{')
+for key, value in analytics.items():
+    print(f'{key}: {value}')
+print('}')
 
 # Необходимо собрать аналитику о товарах.
 # Реализовать словарь, в котором каждый ключ — характеристика товара,
