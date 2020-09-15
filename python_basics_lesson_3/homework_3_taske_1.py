@@ -5,8 +5,21 @@ def func_division(dividend, divisor):
     return dividend / divisor
 
 
-exit = None
-while exit != 'нет':
+exit_ = None
+i = 0
+while True:
+    while True:
+        if i < 1:
+            break
+        else:
+            exit_ = input('Желаете продолжить? Да или нет:  ')
+            exit_ = exit_.lower()
+            if exit_ != 'да' and exit_ != 'нет':
+                print('Error! Вы должны ввести да или нет')
+            else:
+                break
+    if exit_ == 'нет':
+        break
     try:
         user_dvd = int(input('Введите делимое:  '))
         user_dvs = int(input('Введите делитель:  '))
@@ -18,7 +31,4 @@ while exit != 'нет':
         print('Вы должны ввести числовое значение')
         continue
     print(f'При делении {user_dvd} на {user_dvs} получится {quotient:.2f}')
-    exit = input('Желаете продолжить? Да или нет:  ')
-    exit = exit.lower()
-    if exit != 'да' and exit != 'нет':
-        pass
+    i += 1
