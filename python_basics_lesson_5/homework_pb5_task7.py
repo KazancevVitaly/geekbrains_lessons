@@ -12,6 +12,8 @@
 #
 # Подсказка: использовать менеджеры контекста.
 
+import json
+
 with open('text_7.txt', 'r', encoding='utf-8') as firms:
     firms_dict = {}
     i = 0
@@ -33,7 +35,6 @@ average_dict = {'average_profit': value / i}
 firms_list = [firms_dict, average_dict]
 print(firms_list)
 
-import json
 
 with open('json_firms.json', 'w', encoding='utf-8') as firms_json:
-    json.dump(firms_list, firms_json)
+    json.dump(firms_list, firms_json, indent=2, ensure_ascii=False)
