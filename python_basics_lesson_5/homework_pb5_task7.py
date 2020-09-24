@@ -13,4 +13,27 @@
 # Подсказка: использовать менеджеры контекста.
 
 with open('text_7.txt', 'r', encoding='utf-8') as firms:
-    pass
+    firms_dict = {}
+    i = 0
+    all_profit = 0
+    for el in firms:
+        el = el.split()
+        # print(el)
+        i += 1
+        for elm in el:
+            key = f'{el[1]} {el[0]}'
+            value = float(el[2]) - float(el[3])
+            # print(f'{key} - {value}')
+            break
+        firms_dict.update({key: value})
+        all_profit += value
+average_dict = {'average_profit': value / i}
+# print(average_dict)
+# print(firms_dict)
+firms_list = [firms_dict, average_dict]
+print(firms_list)
+
+import json
+
+with open('json_firms.json', 'w', encoding='utf-8') as firms_json:
+    json.dump(firms_list, firms_json)
