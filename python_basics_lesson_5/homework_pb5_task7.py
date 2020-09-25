@@ -37,4 +37,4 @@ print(firms_list)
 
 
 with open('json_firms.json', 'w', encoding='utf-8') as firms_json:
-    json.dump(firms_list, firms_json, indent=2, ensure_ascii=False)
+    json.dump(firms_list, firms_json, indent=4, ensure_ascii=False)
