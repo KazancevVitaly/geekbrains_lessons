@@ -15,9 +15,14 @@ class Road:
     def m_asphalt(self):
         mass = 25
         thickness = 5
-        result = (Road._length * Road._width * mass * thickness)/1000
+        result = (self._length * self._width * mass * thickness)/1000
         return result
 
 
 road1 = Road()
 print(road1.m_asphalt())
+
+road2 = Road()
+road2._length = 7000
+road2._width = 30
+print(road2.m_asphalt())

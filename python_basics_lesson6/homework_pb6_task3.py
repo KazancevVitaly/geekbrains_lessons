@@ -23,16 +23,25 @@ class Worker:
 
 class Position(Worker):
     def get_full_name(self):
-        w1 = f'{Worker.name} {Worker.surname}'
+        w1 = f'{self.name} {self.surname}'
         return w1
 
     def get_total_income(self):
-        inc_w1 = Worker._income.get('wage') + Worker._income.get('bonus')
+        inc_w1 = self._income.get('wage') + self._income.get('bonus')
         return inc_w1
 
 
 worker1 = Position()
-print(f'Доход \033[1m\033[3m{worker1.get_full_name()} \033[0m занимающего должность \033[1m{Worker.position} '
+print(f'Доход \033[1m\033[3m{worker1.get_full_name()} \033[0m занимающего должность \033[1m{worker1.position} '
       f'\033[0m составляет \033[1m{worker1.get_total_income():.2f}')
 
-
+worker2 = Position()
+worker2.name = 'Kate'
+worker2.surname = 'Brown'
+worker2.position = 'Secretary'
+worker2._income = {
+    'wage': 15000,
+    'bonus': 5000
+}
+print(f'Доход \033[1m\033[3m{worker2.get_full_name()} \033[0m занимающего должность \033[1m{worker2.position} '
+      f'\033[0m составляет \033[1m{worker2.get_total_income():.2f}')
