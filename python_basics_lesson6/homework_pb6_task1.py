@@ -14,16 +14,16 @@ class TrafficLight:
 
     def running(self):
         while True:
-            self.__color = 'RED'
+            # self.__color = 'RED'
             print(f'\033[31m{TrafficLight.__color}')
             sleep(7)
-            self.__color = 'YELLOW'
+            # self.__color = 'YELLOW'
             print(f'\033[33m{TrafficLight.__color}')
             sleep(2)
-            self.__color = 'GREEN'
+            # self.__color = 'GREEN'
             print(f'\033[32m{TrafficLight.__color}')
             sleep(7)
-            self.__color = 'YELLOW'
+            # self.__color = 'YELLOW'
             print(f'\033[33m{TrafficLight.__color}')
             sleep(2)
 

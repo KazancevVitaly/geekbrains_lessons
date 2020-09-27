@@ -28,7 +28,6 @@ class TrafficLight:
         t.setpos(0, 100)
         t.pendown()
         t.circle(100)
-        return
 
     def step2(self):
         while True:
@@ -88,7 +87,4 @@ class TrafficLight:
 traffic_light = TrafficLight()
 traffic_light.step1()
 traffic_light.step2()
-# t.color("black", "red")
-# t.begin_fill()
-# t.circle(80)
-# t.end_fill()
+
