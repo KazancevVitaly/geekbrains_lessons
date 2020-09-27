@@ -8,6 +8,7 @@ class TrafficLight:
     def step1(self):
         t = turtle.Turtle()
         turtle.screensize(800, 800, )
+        t.speed(0)
         t.penup()
         t.setpos(-100, -300)
         t.pendown()
@@ -32,6 +33,7 @@ class TrafficLight:
     def step2(self):
         while True:
             t = turtle.Turtle()
+            t.speed(0)
             t.penup()
             t.setpos(0, 100)
             t.pendown()
@@ -51,6 +53,7 @@ class TrafficLight:
             t.end_fill()
 
             a = turtle.Turtle()
+            a.speed(0)
             a.penup()
             a.setpos(0, 100)
             a.pendown()
