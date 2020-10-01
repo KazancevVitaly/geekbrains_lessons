@@ -15,8 +15,9 @@ from abc import ABC, abstractmethod
 
 
 class Clothes(ABC):
-    def __init__(self, item_of_clothing):
-        self.item_of_clothing = item_of_clothing
+    @abstractmethod
+    def __init__(self):
+        pass
 
     @abstractmethod
     def calculation(self):
@@ -24,7 +25,7 @@ class Clothes(ABC):
 
 
 class Coat(Clothes):
-    def __init__(self, name, size):
+    def __init__(self, name, size): #?
         self.size = size
         self.name = name
 
@@ -33,11 +34,12 @@ class Coat(Clothes):
         return a
 
     def __str__(self):
-        return f'{self.size / 6.5 + 0.5:.2f}'
+        return f'Для пошива {self.name} {self.size} размера нужна ткань в количестве' \
+               f' {self.size / 6.5 + 0.5:.2f} метров'
 
 
 class Costume(Clothes):
-    def __init__(self, name, height):
+    def __init__(self, name, height): #?
         self.name = name
         self.height = height
 
@@ -45,11 +47,14 @@ class Costume(Clothes):
         return 2 * self.height + 0.3
 
     def __str__(self):
-        return f'{2 * self.height + 0.3:.2f}'
+        return f'Чтобы сшить {self.name} на рост {self.height * 100} см.' \
+               f'необходимо {2 * self.height + 0.3:.2f} метров ткани'
 
 
 coat_fabric = Coat('coat', 48)
 print(coat_fabric)
 costume_fabric = Costume('costume', 1.7)
 print(costume_fabric)
-print(f'{coat_fabric.calculation() + costume_fabric.calculation():.2f}')
+print(f'Всего нужно {coat_fabric.calculation() + costume_fabric.calculation():.2f} метров ткани')
+
+# применить @property
