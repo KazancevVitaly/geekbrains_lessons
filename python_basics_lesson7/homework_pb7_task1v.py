@@ -15,10 +15,10 @@ class Matrix:
         self.matrix = np.array(matrix)
 
     def __add__(self, other):
-        return self.matrix + other.matrix
+        return Matrix(self.matrix + other.matrix)
 
     def __str__(self):
-        return f'{self.matrix}'
+        return f'{self.matrix}'.replace('[', ' ').replace(']', '')
 
 
 matrix_1 = Matrix([[1, 2, 3], [1, 2, 3], [1, 2, 3]])
@@ -29,5 +29,8 @@ print(f"{'-' * 100}")
 print(matrix_2)
 print(f"{'-' * 100}")
 print(matrix_1 + matrix_2)
+matrix_3 = Matrix([[4, 4, 4], [4, 4, 4], [4, 4, 4]])
+print(f"{'-' * 100}")
+print(matrix_1 + matrix_2 + matrix_3)
 
-# сделать красивый вывод без скобок ?
+# сделать красивый вывод без скобок ? --- Matrix()
