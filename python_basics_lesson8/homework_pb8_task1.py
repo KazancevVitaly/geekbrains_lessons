@@ -14,23 +14,29 @@ class Date:
     @classmethod
     def get_date(cls, data):
         day, month, year = data
-        return cls(int(day), int(month), int(year))
+        try:
+            return cls(int(day), int(month), int(year))
+        except ValueError:
+            return cls(day, month, year)
 
     @staticmethod
     def validation_date(self):
-        if (self.day >= 1 and self.day <= 31) and (self.month == 1 or self.month == 3 or self.month == 5
-                                                   or self.month == 7 or self.month == 8 or self.month == 10
-                                                   or self.month == 12):
-            return f'{self.day:02}/{self.month:02}/{self.year}'
-        elif (self.day >= 1 and self.day <= 28) and self.month == 2 and self.year % 4 != 0:
-            return f'{self.day:02}/{self.month:02}/{self.year}'
-        elif (self.day >= 1 and self.day <= 29) and self.month == 2 and self.year % 4 == 0:
-            return f'{self.day:02}/{self.month:02}/{self.year}'
-        elif (self.day >= 1 and self.day <= 30) and (self.month == 4 or self.month == 6 or self.month == 9
-                                                     or self.month == 11):
-            return f'{self.day:02}/{self.month:02}/{self.year}'
-        else:
-            return f'Введено недопустимое значение!'
+        try:
+            if (self.day >= 1 and self.day <= 31) and (self.month == 1 or self.month == 3 or self.month == 5
+                                                       or self.month == 7 or self.month == 8 or self.month == 10
+                                                       or self.month == 12):
+                return f'{self.day:02}/{self.month:02}/{self.year}'
+            elif (self.day >= 1 and self.day <= 28) and self.month == 2 and self.year % 4 != 0:
+                return f'{self.day:02}/{self.month:02}/{self.year}'
+            elif (self.day >= 1 and self.day <= 29) and self.month == 2 and self.year % 4 == 0:
+                return f'{self.day:02}/{self.month:02}/{self.year}'
+            elif (self.day >= 1 and self.day <= 30) and (self.month == 4 or self.month == 6 or self.month == 9
+                                                         or self.month == 11):
+                return f'{self.day:02}/{self.month:02}/{self.year}'
+            else:
+                return f'Введено недопустимое значение!'
+        except TypeError:
+            print('Ошибка! одно из значение не является числом.')
 
 
 date = f'{input("Введите число: ")}-{input("Введите номер месяца: ")}-{input("Введите год: ")}'
