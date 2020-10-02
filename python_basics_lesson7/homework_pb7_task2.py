@@ -25,7 +25,8 @@ class Clothes(ABC):
 
 
 class Coat(Clothes):
-    def __init__(self, name, size): #?
+    def __init__(self, name, size):
+        super().__init__()
         self.size = size
         self.name = name
 
@@ -39,7 +40,8 @@ class Coat(Clothes):
 
 
 class Costume(Clothes):
-    def __init__(self, name, height): #?
+    def __init__(self, name, height):
+        super().__init__()
         self.name = name
         self.height = height
 
@@ -47,7 +49,7 @@ class Costume(Clothes):
         return 2 * self.height + 0.3
 
     def __str__(self):
-        return f'Чтобы сшить {self.name} на рост {self.height * 100} см.' \
+        return f'Чтобы сшить {self.name} на рост {self.height * 100} см. ' \
                f'необходимо {2 * self.height + 0.3:.2f} метров ткани'
 
 
