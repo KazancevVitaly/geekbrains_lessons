@@ -38,16 +38,35 @@ class WareHouse:
         return receiving_dict
 
     def storage(self):
-        WareHouse.storage_list.append(self.receiving())
-        return '\n'.join(map(str, WareHouse.storage_list))
+        self.storage_list.append(self.receiving())
+        return '\n'.join(map(str, self.storage_list))
 
-    def give_out(self):
-        pass
+    @staticmethod
+    def give_out(type_, name, model, quantity, date):
+        give_out_dict = {
+            'Наименование': name,
+            'Модель': model,
+            'В количестве шт.': quantity,
+            'Дата выдачи': date
+        }
+        for el in WareHouse(type_=type_, name=name, quantity=quantity, date=date).storage_list:
+            for key, value in el.items():
+                name_give_out = value.get('Наименование')
+                model_give_out = value.get('Модель')
+                if name_give_out == name and model_give_out == model:
+                    quant = el.get('Количество шт.')
+                    el.pop('Количество шт.')
+                    new_dict = {'Количество шт.': quant - quantity}
+                    el.update(new_dict)
+                    break
+            break
+        # return WareHouse(type_=type_, name=name, date=date, quantity=quant - quantity).receiving()
+        return f'Выдан\n {type_} {json.dumps(give_out_dict, indent=4, sort_keys=True, ensure_ascii=False)}'
 
     def __str__(self):
         return f'Для хранения принята оргтехника:\n' \
                f' {json.dumps(self.receiving(), indent=4, sort_keys=True, ensure_ascii=False)}\n' \
-               f'На складе хранится:\n [{self.storage()}]'
+               f'На складе хранится:\n[{self.storage()}]'
 
 
 class OfficeEquipment:
@@ -134,12 +153,10 @@ print('-' * 100)
 print(x_1)
 print(position_4)
 
-# 5 сделать красивый вывод словарей и списков в столбик - done
-# 6 доработать метод хранения оргтехники
-# 7 разработать метод выдачи оргтехники
-# выдали Brother 5 шт. должно получиться На складе хранится:
-# Выдано - словарь и список
-# [{'Принтер': {'Наименование': 'Brother', 'Модель': 'HL-1202R', 'Формат печати': 'A4', 'Способ печати': 'лазерная печать', 'Цветная печать': False}, 'Дата поступления': '03-10-2020', 'Количество шт.': 25}
-# {'Принтер': {'Наименование': 'Epson', 'Модель': 'L-132', 'Формат печати': 'A4', 'Способ печати': 'струйный', 'Цветная печать': True}, 'Дата поступления': '03-10-2020', 'Количество шт.': 20}]
+give_out = WareHouse.give_out('Принтер', 'Brother', 'HL-1202R', 5, '05-10-2020')
+print(give_out)
+print('на складе хранится:\n' + '[' + '\n'.join(map(str, WareHouse.storage_list)) + ']')
+
+
 # 8 сделать ввод данных от пользователя
 # 9 разрабоать метод валидации вводимых данных
