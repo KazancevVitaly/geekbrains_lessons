@@ -39,13 +39,15 @@ class WareHouse:
 
     def storage(self):
         WareHouse.storage_list.append(self.receiving())
-        return WareHouse.storage_list
+        return '\n'.join(map(str, WareHouse.storage_list))
 
     def give_out(self):
         pass
 
     def __str__(self):
-        return f'Для хранения принята оргтехника:\n {self.receiving()}\nНа складе хранится:\n {self.storage()}'
+        return f'Для хранения принята оргтехника:\n' \
+               f' {json.dumps(self.receiving(), indent=4, sort_keys=True, ensure_ascii=False)}\n' \
+               f'На складе хранится:\n [{self.storage()}]'
 
 
 class OfficeEquipment:
@@ -72,7 +74,8 @@ class Printer(OfficeEquipment):
         return printer_dict
 
     def __str__(self):
-        return f'Принтер -\n{self.printer_dict()}'
+        # return f'{type(self.printer_dict())}'
+        return f'Принтер -\n{json.dumps(self.printer_dict(), indent=4, sort_keys=True, ensure_ascii=False)}'
 
 
 class Scanner(OfficeEquipment):
@@ -90,7 +93,7 @@ class Scanner(OfficeEquipment):
         return scanner_dict
 
     def __str__(self):
-        return f'Сканер - {self.scanner_dict()}'
+        return f'Сканер -\n{json.dumps(self.scanner_dict(), indent=4, sort_keys=True, ensure_ascii=False)}'
 
 
 class Xerox(OfficeEquipment):
@@ -108,7 +111,7 @@ class Xerox(OfficeEquipment):
         return xerox_dict
 
     def __str__(self):
-        return f'Сканер - {self.xerox_dict()}'
+        return f'Ксерокс - \n{json.dumps(self.xerox_dict(), indent=4, sort_keys=True, ensure_ascii=False)}'
 
 
 p_1 = Printer('Brother', 'HL-1202R', 'A4', 'лазерная печать', False)
@@ -131,8 +134,12 @@ print('-' * 100)
 print(x_1)
 print(position_4)
 
-# 5 сделать красивый вывод словарей и списков в столбик
+# 5 сделать красивый вывод словарей и списков в столбик - done
 # 6 доработать метод хранения оргтехники
 # 7 разработать метод выдачи оргтехники
+# выдали Brother 5 шт. должно получиться На складе хранится:
+# Выдано - словарь и список
+# [{'Принтер': {'Наименование': 'Brother', 'Модель': 'HL-1202R', 'Формат печати': 'A4', 'Способ печати': 'лазерная печать', 'Цветная печать': False}, 'Дата поступления': '03-10-2020', 'Количество шт.': 25}
+# {'Принтер': {'Наименование': 'Epson', 'Модель': 'L-132', 'Формат печати': 'A4', 'Способ печати': 'струйный', 'Цветная печать': True}, 'Дата поступления': '03-10-2020', 'Количество шт.': 20}]
 # 8 сделать ввод данных от пользователя
 # 9 разрабоать метод валидации вводимых данных
